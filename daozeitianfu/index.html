@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="盗贼天赋加点指南 - 深度解析魔兽世界及其他RPG游戏中潜行者职业的天赋构建、PVE输出循环与PVP生存技巧。提供最新版本天赋图解、属性优先级与实战配点方案。">
+    <meta name="keywords" content="盗贼天赋加点,魔兽世界盗贼天赋,潜行者配点,PVE天赋,PVP天赋,盗贼输出循环">
+    <title>盗贼天赋加点 - 潜行者职业构建与实战配点指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d4af37; /* 经典游戏金 */
+            --bg-dark: #1a1b26;
+            --bg-card: #24283b;
+            --text-main: #c0caf5;
+            --text-muted: #565f89;
+            --accent-danger: #f7768e;
+            --accent-success: #9ece6a;
+            --border-color: #414868;
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(26, 27, 38, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #24283b 0%, #1a1b26 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+            margin-left: 15px;
+        }
+
+        /* Tier System (Talent Tree) */
+        .talent-tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .talent-column {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .column-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        .column-header h3 {
+            color: var(--primary-color);
+        }
+
+        .talent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .talent-item {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .talent-item:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .talent-rank {
+            width: 24px;
+            height: 24px;
+            background: var(--bg-dark);
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .talent-item.maxed .talent-rank {
+            background: var(--accent-success);
+            border-color: var(--accent-success);
+            color: #1a1b26;
+            font-weight: bold;
+        }
+
+        .talent-info {
+            flex: 1;
+        }
+
+        .talent-name {
+            font-weight: bold;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .talent-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .talent-cost {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Build Cards */
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .build-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .build-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .build-header {
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .build-tag {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .tag-pve { background: rgba(158, 206, 106, 0.2); color: var(--accent-success); }
+        .tag-pvp { background: rgba(247, 118, 142, 0.2); color: var(--accent-danger); }
+        .tag-hybrid { background: rgba(212, 175, 55, 0.2); color: var(--primary-color); }
+
+        .build-body {
+            padding: 20px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label { color: var(--text-muted); }
+        .stat-value { font-weight: bold; }
+
+        .build-desc {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: #1a1b26;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Guide Section */
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .guide-content {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius);
+        }
+
+        .guide-sidebar {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+
+        .info-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .info-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .step-list {
+            counter-reset: step;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 25px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--border-color);
+            color: var(--text-main);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+        }
+
+        .step-item h4 {
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .step-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #11121d;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                position: relative;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                padding: 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .guide-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <span>潜行者指南</span>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#pve">PVE输出</a></li>
+                <li><a href="#pvp">PVP生存</a></li>
+                <li><a href="#stats">属性分析</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="version-badge">当前适用版本：10.0 / 魔兽世界</div>
+        <h1>盗贼天赋加点 <span>全解析</span></h1>
+        <p>掌握潜行者的核心机制，从爆发循环到生存博弈。本文提供最详细的PVE输出天赋构建与PVP战斗天赋方案，助你在副本与竞技场中主宰战场。</p>
+    </div>
+</section>
+
+<main class="container">
+    
+    <!-- PVE Section -->
+    <section id="pve">
+        <div class="section-title">
+            PVE 核心输出天赋
+            <span class="subtitle">最大化DPS的爆发与续航</span>
+        </div>
+        
+        <div class="talent-tree">
+            <!-- Combat Column -->
+            <div class="talent-column">
+                <div class="column-header">
+                    <h3>战斗系</h3>
+                    <small>爆发与攻速</small>
+                </div>
+                <div class="talent-list">
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">武器大师</span>
+                            <span class="talent-desc">双持武器伤害提升</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">冷酷攻击</span>
+                            <span class="talent-desc">攻击有几率造成流血</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">影袭</span>
+                            <span class="talent-desc">起手爆发技能，消耗能量</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item">
+                        <div class="talent-rank">2</div>
+                        <div class="talent-info">
+                            <span class="talent-name">强化肾击</span>
+                            <span class="talent-desc">延长控制时间</span>
+                        </div>
+                        <span class="talent-cost">2点</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assassination Column -->
+            <div class="talent-column">
+                <div class="column-header">
+                    <h3>刺杀系</h3>
+                    <small>持续与毒药</small>
+                </div>
+                <div class="talent-list">
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">邪恶</span>
+                            <span class="talent-desc">毒药伤害提升</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">强化毒药</span>
+                            <span class="talent-desc">毒药效果增强</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">致命毒药</span>
+                            <span class="talent-desc">双持致命几率</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">切割</span>
+                            <span class="talent-desc">增加攻击速度</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subtlety Column -->
+            <div class="talent-column">
+                <div class="column-header">
+                    <h3>敏锐系</h3>
+                    <small>潜行与爆发</small>
+                </div>
+                <div class="talent-list">
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">欺瞒</span>
+                            <span class="talent-desc">潜行不被发现几率</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item maxed">
+                        <div class="talent-rank">5</div>
+                        <div class="talent-info">
+                            <span class="talent-name">伏击</span>
+                            <span class="talent-desc">潜行状态下造成暴击</span>
+                        </div>
+                        <span class="talent-cost">5点</span>
+                    </div>
+                    <div class="talent-item">
+                        <div class="talent-rank">3</div>
+                        <div class="talent-info">
+                            <span class="talent-name">伺机而动</span>
+                            <span class="talent-desc">减少技能冷却</span>
+                        </div>
+                        <span class="talent-cost">3点</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="build-grid">
+            <div class="build-card">
+                <div class="build-header">
+                    <h3>战斗匕首流</h3>
+                    <span class="build-tag tag-pve">DPS</span>
+                </div>
+                <div class="build-body">
+                    <div class="stat-row">
+                        <span class="stat-label">主属性</span>
+                        <span class="stat-value">敏捷 (优先级最高)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">副属性</span>
+                        <span class="stat-value">急速 > 爆击 > 命中</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">核心循环</span>
+                        <span class="stat-value">影袭 -> 切割 -> 恶魔之痛</span>
+                    </div>
+                    <p class="build-desc">依靠武器大师和影袭的高频输出，适合拥有高暴击装备的盗贼。起手使用影袭，保持切割和恶魔之痛，利用剔骨进行爆发。</p>
+                    <a href="#" class="btn">查看完整配点</a>
+                </div>
+            </div>
+
+            <div class="build-card">
+                <div class="build-header">
+                    <h3>刺杀毒药流</h3>
+                    <span class="build-tag tag-pve">持续</span>
+                </div>
+                <div class="build-body">
+                    <div class="stat-row">
+                        <span class="stat-label">主属性</span>
+                        <span class="stat-value">敏捷</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">副属性</span>
+                        <span class="stat-value">急速 > 爆击 > 穿透</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">核心循环</span>
+                        <span class="stat-value">背刺 > 毒药攻击</span>
+                    </div>
+                    <p class="build-desc">强化毒药效果，通过背刺触发毒药叠加，实现无限续航。适合副本中需要长时间站桩输出的环境。</p>
+                    <a href="#" class="btn">查看完整配点</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PVP Section -->
+    <section id="pvp" style="margin-top: 60px;">
+        <div class="section-title">
+            PVP 战斗天赋
+            <span class="subtitle">控制、爆发与生存博弈</span>
+        </div>
+        <div class="build-grid">
+            <div class="build-card">
+                <div class="build-header">
+                    <h3>控制打断流</h3>
+                    <span class="build-tag tag-pvp">PVP</span>
+                </div>
+                <div class="build-body">
+                    <div class="stat-row">
+                        <span class="stat-label">关键技能</span>
+                        <span class="stat-value">脚踢、缴械、闷棍</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">生存能力</span>
+                        <span class="stat-value">中 (需团队配合)</span>
+                    </div>
+                    <p class="build-desc">专注于打断敌方施法（脚踢）和控制链（闷棍、肾击）。在竞技场中作为控制手，保护队友输出。</p>
+                    <a href="#" class="btn">获取配点图</a>
+                </div>
+            </div>
+
+            <div class="build-card">
+                <div class="build-header">
+                    <h3>爆发爆发流</h3>
+                    <span class="build-tag tag-pvp">PVP</span>
+                </div>
+                <div class="build-body">
+                    <div class="stat-row">
+                        <span class="stat-label">关键技能</span>
+                        <span class="stat-value">背刺、伏击、冷血</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">爆发时机</span>
+                        <span class="stat-value">潜行起手、冷血开启</span>
+                    </div>
+                    <p class="build-desc">利用潜行和冷血技能，瞬间打出成吨伤害。适合1v1决斗或截杀敌方关键治疗者。</p>
+                    <a href="#" class="btn">获取配点图</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="stats" style="margin-top: 60px;">
+        <div class="section-title">属性优先级与操作指南</div>
+        <div class="guide-layout">
+            <div class="guide-content">
+                <div class="info-box">
+                    <h4>属性详解</h4>
+                    <p>盗贼的属性优先级通常遵循敏捷 > 急速 > 爆击 > 命中/精准。敏捷提供攻击强度和暴击，急速缩短攻击间隔，增加输出频率。</p>
+                </div>
+                
+                <h3>输出循环步骤</h3>
+                <div class="step-list">
+                    <div class="step-item">
+                        <h4>1. 起手爆发</h4>
+                        <p>如果处于潜行状态，直接使用伏击或背刺。如果未潜行，使用影袭并立即开启冷血技能进行爆发。</p>
+                    </div>
+                    <div class="step-item">
+                        <h4>2. 保持状态</h4>
+                        <p>确保切割和恶魔之痛处于激活状态，这能显著提升你的DPS。优先级高于其他单体技能。</p>
+                    </div>
+                    <div class="step-item">
+                        <h4>3. 能量管理</h4>
+                        <p>避免能量溢出。在技能冷却时，使用毒药攻击或剔骨填补空档。利用影舞步在PVP中灵活走位。</p>
+                    </div>
+                    <div class="step-item">
+                        <h4>4. 爆发时机</h4>
+                        <p>在战斗开始的前15秒内（战斗狂暴效果），尽可能多地释放技能。当能量充足且技能冷却完毕时，不要犹豫。</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="guide-sidebar">
+                <h3>常见问题 (FAQ)</h3>
+                <div style="margin-top: 20px;">
+                    <details style="margin-bottom: 15px; cursor: pointer;">
+                        <summary style="color: var(--primary-color); font-weight: bold;">为什么我的DPS上不去？</summary>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">检查是否保持切割和恶魔之痛，以及是否在战斗狂暴期间浪费了爆发机会。</p>
+                    </details>
+                    <details style="margin-bottom: 15px; cursor: pointer;">
+                        <summary style="color: var(--primary-color); font-weight: bold;">PVP中总是被控制怎么办？</summary>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">建议在敏锐系投入点数以提高闪避，并学习反制技能（如脚踢）打断敌方施法。</p>
+                    </details>
+                    <details style="margin-bottom: 15px; cursor: pointer;">
+                        <summary style="color: var(--primary-color); font-weight: bold;">命中等级重要吗？</summary>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">是的，如果命中不足，你的技能会未命中，导致输出断档。建议达到95%以上的命中率。</p>
+                    </details>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 潜行者指南网 - 专注于盗贼职业攻略与天赋构建。</p>
+        <p>本站内容仅供参考，游戏版本更新可能导致天赋效果变化。</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('nav-menu');
+        nav.classList.toggle('active');
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                document.getElementById('nav-menu').classList.remove('active');
+            }
+        });
+    });
+</script>
+
+</body>
+  </html>
