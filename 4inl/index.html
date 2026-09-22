@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="4inlove组合官方网站。回顾4inlove（黑涩会美少女）的音乐历程、经典MV、成员现状及粉丝资讯。收录《青春纪念册》、《屋顶》等代表作。">
+    <meta name="keywords" content="4inlove组合, 黑涩会美少女, 4 in love, 青春纪念册, 屋顶, 青春万岁, 王心凌, 郁可唯, 阿雅, 娜娜, 玫瑰, 青春纪念册MV">
+    <title>4inlove组合 - 经典华语流行乐团与青春回忆</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b81;
+            --secondary-color: #ff9eb5;
+            --bg-color: #fff0f3;
+            --text-color: #2d3436;
+            --light-text: #636e72;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, #ff9eb5 0%, #ff6b81 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/4inlove_hero/1920/1080'); /* Abstract placeholder */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Members Grid */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .section-header .divider {
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Discography Section */
+        .discography {
+            background-color: white;
+        }
+
+        .album-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .album-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+        }
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .album-cover:hover {
+            transform: scale(1.05);
+        }
+
+        .album-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .album-year {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* Timeline/History */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2d3436;
+            color: #dfe6e9;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p {
+            color: #b2bec3;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #636e72;
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-container { flex-direction: column; height: auto; padding: 15px; }
+            nav ul { margin-top: 15px; gap: 15px; font-size: 0.9rem; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .left::after, .right::after { left: 21px; }
+            .right { left: 0%; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">4inlove<span>组合</span></a>
+        <nav>
+            <ul>
+                <li><a href="#members" class="active">成员介绍</a></li>
+                <li><a href="#discography">经典作品</a></li>
+                <li><a href="#history">发展历程</a></li>
+                <li><a href="#memories">粉丝回忆</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>青春不散场</h1>
+            <p>重温4inlove（黑涩会美少女）带来的快乐时光，聆听那些年我们一起听过的旋律。</p>
+            <a href="#members" class="btn">了解成员</a>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>五位成员</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="members-grid">
+                <article class="member-card">
+                    <img src="https://picsum.photos/seed/wangxinyling/300/400" alt="王心凌" class="member-img">
+                    <div class="member-info">
+                        <h3 class="member-name">王心凌</h3>
+                        <p class="member-role">队长 / 主唱</p>
+                    </div>
+                </article>
+                <article class="member-card">
+                    <img src="https://picsum.photos/seed/yukwei/300/400" alt="郁可唯" class="member-img">
+                    <div class="member-info">
+                        <h3 class="member-name">郁可唯</h3>
+                        <p class="member-role">主唱</p>
+                    </div>
+                </article>
+                <article class="member-card">
+                    <img src="https://picsum.photos/seed/aya/300/400" alt="阿雅" class="member-img">
+                    <div class="member-info">
+                        <h3 class="member-name">阿雅</h3>
+                        <p class="member-role">MC / 综艺</p>
+                    </div>
+                </article>
+                <article class="member-card">
+                    <img src="https://picsum.photos/seed/nana/300/400" alt="娜娜" class="member-img">
+                    <div class="member-info">
+                        <h3 class="member-name">娜娜</h3>
+                        <p class="member-role">舞蹈 / 绘画</p>
+                    </div>
+                </article>
+                <article class="member-card">
+                    <img src="https://picsum.photos/seed/meigui/300/400" alt="玫瑰" class="member-img">
+                    <div class="member-info">
+                        <h3 class="member-name">玫瑰</h3>
+                        <p class="member-role">主唱 / 模特</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discography Section -->
+    <section id="discography" class="section discography">
+        <div class="container">
+            <div class="section-header">
+                <h2>经典专辑</h2>
+                <div class="divider"></div>
+                <p style="margin-top: 10px; color: #666;">收录了《青春纪念册》、《屋顶》等脍炙人口的歌曲</p>
+            </div>
+            <div class="album-list">
+                <div class="album-item">
+                    <img src="https://picsum.photos/seed/album1/200/200" alt="青春纪念册专辑封面" class="album-cover">
+                    <div class="album-title">青春纪念册</div>
+                    <div class="album-year">2002</div>
+                </div>
+                <div class="album-item">
+                    <img src="https://picsum.photos/seed/album2/200/200" alt="透明专辑封面" class="album-cover">
+                    <div class="album-title">透明</div>
+                    <div class="album-year">2003</div>
+                </div>
+                <div class="album-item">
+                    <img src="https://picsum.photos/seed/album3/200/200" alt="四千金专辑封面" class="album-cover">
+                    <div class="album-title">四千金</div>
+                    <div class="album-year">2004</div>
+                </div>
+                <div class="album-item">
+                    <img src="https://picsum.photos/seed/album4/200/200" alt="黑涩会美少女专辑封面" class="album-cover">
+                    <div class="album-title">黑涩会美少女</div>
+                    <div class="album-year">2005</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>发展历程</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2002</span>
+                        <h3>组合成立</h3>
+                        <p>王心凌、郁可唯、阿雅、娜娜、玫瑰五人通过选拔加入“黑涩会美少女”团体，正式出道。</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2003</span>
+                        <h3>《青春纪念册》</h3>
+                        <p>发行首张同名专辑《黑涩会美少女》，主打歌《青春纪念册》成为校园传唱度极高的歌曲。</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2004</span>
+                        <h3>转型发展</h3>
+                        <p>成员开始向个人领域发展，郁可唯专注音乐，阿雅进军综艺主持，王心凌在偶像剧领域崭露头角。</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2005</span>
+                        <h3>团体解散</h3>
+                        <p>组合宣布解散，成员各自寻找新的发展方向，但留下了许多珍贵的集体回忆。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="section" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>粉丝回忆</h2>
+                <div class="divider"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <article style="padding: 20px; background: #fff0f3; border-radius: 8px;">
+                    <h4 style="margin-bottom: 10px;">关于《屋顶》</h4>
+                    <p style="font-size: 0.9rem; color: #555;">当年最期待每周更新的《爱里微甜》和《屋顶》MV，那是属于那个年代最纯粹的青春悸动。</p>
+                </article>
+                <article style="padding: 20px; background: #fff0f3; border-radius: 8px;">
+                    <h4 style="margin-bottom: 10px;">阿雅的搞笑担当</h4>
+                    <p style="font-size: 0.9rem; color: #555;">阿雅在节目中独特的幽默感和直率性格，成为了许多人记忆中不可或缺的“搞笑女”代表。</p>
+                </article>
+                <article style="padding: 20px; background: #fff0f3; border-radius: 8px;">
+                    <h4 style="margin-bottom: 10px;">郁可唯的蜕变</h4>
+                    <p style="font-size: 0.9rem; color: #555;">从组合中安静唱歌的成员，到如今华语乐坛的实力唱将，郁可唯的每一步都走得很扎实。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>4inlove组合</h3>
+                <p>一个关于青春、梦想与回忆的纪念页面。</p>
+                <p>致力于整理和展示4inlove（黑涩会美少女）的相关资料与经典影像。</p>
+            </div>
+            <div class="footer-col">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="#members">成员介绍</a></li>
+                    <li><a href="#discography">经典作品</a></li>
+                    <li><a href="#history">发展历程</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>相关链接</h3>
+                <ul>
+                    <li><a href="#">王心凌官网</a></li>
+                    <li><a href="#">郁可唯音乐</a></li>
+                    <li><a href="#">阿雅主持作品</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 4inlove组合纪念站. All Rights Reserved. 本站为粉丝制作，非官方网站。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add active class to nav on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
